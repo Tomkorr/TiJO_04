@@ -1,8 +1,8 @@
 describe('app', function () {
     'use strict';
     var app = window.app;
-    
-    xdescribe('Division function', function () {
+
+    describe('Division function', function () {
         it('should divide number a by b', function () {
             expect(app.divide(10, 5)).toEqual(2);
             expect(app.divide(15, 3)).toEqual(5)
@@ -24,8 +24,7 @@ describe('app', function () {
         });
         it('should divide number a by b when a is 0', function () {
             expect(app.divide(0, 1)).toEqual(false);
-        });
-        it('should divide number a by b when a is 101', function () {
+        });        it('should divide number a by b when a is 101', function () {
             expect(app.divide(101, 10)).toEqual(false);
         });
         it('should return false when b is grater than a', function () {
@@ -34,83 +33,129 @@ describe('app', function () {
         it('should return false when b is equal 0', function () {
             expect(app.divide(101, 0)).toEqual(false);
         });
+    });
+
+    describe('getDescendingNumbers', function () {
+        it('should get descending numbers between string 10 and number 1', function () {
+            expect(app.getDescendingNumbers('10', 1)).toEqual(false);
+        });
+        it('should get descending numbers between number 10 and string 1', function () {
+            expect(app.getDescendingNumbers(10, '1')).toEqual(false);
+        });
+        it('should get descending numbers between string 10 and string 1', function () {
+            expect(app.getDescendingNumbers('10', '1')).toEqual(false);
+        });
+        it('should get descending numbers between 1 and 10', function () {
+            expect(app.getDescendingNumbers(1, 10)).toEqual(false);
+        });
+        it('should get descending numbers between 1 and 1', function () {
+            expect(app.getDescendingNumbers(1, 1)).toEqual(false);
+        });
+        it('should get descending numbers between 2 and 1', function () {
+            expect(app.getDescendingNumbers(2, 1)).toEqual('2 1');
+        });
+
+     describe('areaOfTrapezoid', function () {
+         it('should return area of trapezoid, a < 0', function () {
+             expect(app.areaOfTrapezoid(-1, 1, 1)).toEqual(false);
+         });
+         it('should return area of trapezoid, b < 0', function () {
+             expect(app.areaOfTrapezoid(1, -1, 1)).toEqual(false);
+         });
+         it('should return area of trapezoid, h < 0', function () {
+             expect(app.areaOfTrapezoid(1, 1, -1)).toEqual(false);
+         });
+         it('should return area of trapezoid, a is not a number', function () {
+             expect(app.areaOfTrapezoid('1', 1, 1)).toEqual(false);
+         });
+         it('should return area of trapezoid, b is not a number', function () {
+             expect(app.areaOfTrapezoid(1, '1', 1)).toEqual(false);
+         });
+         it('should return area of trapezoid, h is not a number', function () {
+             expect(app.areaOfTrapezoid(1, 1, '1')).toEqual(false);
+         });
+         it('should return area of trapezoid = 1', function () {
+             expect(app.areaOfTrapezoid(1, 1, 1)).toEqual(1);
+         });
+        })
         
-    });
-    
-    
-    xdescribe('getDesc',function() {
-        it('should get numbers between two numbers, maybe', function() {
-            expect(app.getDescendingNumbers(3,1)).toEqual();
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(3,1)).toEqual(false);
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(3,1)).toEqual(false);
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(3,1)).toEqual('3 2 1');
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(5,1)).toEqual('5 4 3 2 1');
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(-2, 6)).toEqual(false);
-        });
-        it('should\'t get a number', function(){
-            expect(app.getDescendingNumbers('aaaaaa', 3)).toEqual(false);
-        });
-        it('should\'t get a number', function(){
-            expect(app.getDescendingNumbers(8, '+')).toEqual(false);
-        });
-        it('should get numbers ', function() {
-            expect(app.getDescendingNumbers(0, -1)).toEqual('0 -1');
-        });
+        describe('maxArray', function () {
+            it('should return max element of array that contains not only numbers', function () {
+                expect(app.maxArray(['0', 0])).toEqual(false);
+            })
+            it('should return max element of array that contains equal numbers', function () {
+                expect(app.maxArray([0, 0])).toEqual(0);
+            })
+            it('should return max element of array [0, 1]', function () {
+                expect(app.maxArray([0, 1])).toEqual(1);
+            })
+            it('should return max element of array [1, 0]', function () {
+                expect(app.maxArray([1, 0])).toEqual(1);
+            })
+        })
+
+        describe('squareOdd', function () {
+            it('should return squareOdd while array contains string and -1', function () {
+                expect(['0', -1]).toEqual(['0', 1]);
+            })
+            it('should return squareOdd while array contains string and -2', function () {
+                expect(['0', -2]).toEqual(['0', -2]);
+            })
+            it('should return squareOdd while array contains string and 0', function () {
+                expect(['0', 0]).toEqual(['0', 0]);
+            })
+            it('should return squareOdd while array contains string and 1', function () {
+                expect(['0', 1]).toEqual(['0', 1]);
+            })
+            it('should return squareOdd while array contains string and 2', function () {
+                expect(['0', 2]).toEqual(['0', 2]);
+            })
+            it('should return squareOdd while array contains string and 3', function () {
+                expect(['0', 3]).toEqual(['0', 9]);
+            })
+            it('should return squareOdd while array contains 0 and -2', function () {
+                expect([0, -2]).toEqual([0, -2]);
+            })
+            it('should return squareOdd while array contains 0 and -1', function () {
+                expect([0, -1]).toEqual([0, 1]);
+            })
+            it('should return squareOdd while array contains 0 and 1', function () {
+                expect([0, 1]).toEqual([0, 1]);
+            })
+            it('should return squareOdd while array contains 0 and 2', function () {
+                expect([0, 2]).toEqual([0, 2]);
+            })
+            it('should return squareOdd while array contains 0 and 3', function () {
+                expect([0, 3]).toEqual([0, 9]);
+            })
+            it('should return squareOdd while array contains 1 and 1', function () {
+                expect([1, 1]).toEqual([1, 1]);
+            })
+            it('should return squareOdd while array contains 1 and 2', function () {
+                expect([1, 2]).toEqual([1, 2]);
+            })
+            it('should return squareOdd while array contains 1 and 3', function () {
+                expect([1, 3]).toEqual([1, 9]);
+            })
+            it('should return squareOdd while array contains false and 0', function () {
+                expect([false, 0]).toEqual(false);
+            })
+            it('should return squareOdd while array contains empty table and 0', function () {
+                expect([[], 0]).toEqual(false);
+            })
+            it('should return squareOdd while array contains empty string and 0', function () {
+                expect(['', 0]).toEqual(false);
+            })
+            it('should return squareOdd while array is null', function () {
+                expect(null).toEqual(false);
+            })
+            it('should return squareOdd while array is empty', function () {
+                expect([]).toEqual(false);
+            })
+            it('should return squareOdd while array is empty string', function () {
+                expect('').toEqual(false);
+            })
+        })
         
-    });
-    
-    
-    describe(' areaOfTrapezoid',function() {
-        xit('should get false', function() {
-            expect(app. areaOfTrapezoid(-1, -1, 4)).toEqual(false);
-        });
-        xit('should get a number', function(){
-            expect(app.areaOfTrapezoid(10,10,20)).toEqual(200);
-        });
-        xit('should\'t get a number', function(){
-            expect(app.areaOfTrapezoid('adasdasd', '1', '54')).toEqual(false);
-        });
-        xit('should get a false value', function(){
-            expect(app.areaOfTrapezoid(-1, -1, -1)).toEqual(false);
-        });
-        xit('should get a false value', function(){
-            expect(app.areaOfTrapezoid(-1, -1, 1)).toEqual(false);
-        });
-        xit('should get a false value', function(){
-            expect(app.areaOfTrapezoid(-1, 1, 1)).toEqual(false);
-        });
-        xit('should get a false value', function(){
-            expect(app.areaOfTrapezoid('a', 10, 10)).toEqual(false);
-        });
-        xit('should get a false value', function(){
-            expect(app.areaOfTrapezoid('a', "aa", 1)).toEqual(false);
-        });
-        it('should get a false value', function(){
-            expect(app.areaOfTrapezoid('a', "aabbbbbccc", "aassc")).toEqual(false);
-        });
-        
-    });
-    
-    
-    describe('maxArray',function() {
-        it('should get a true value', function() {
-            expect(app.maxArray([1,2])).toEqual(2);
-        });
-        it('should get a Null value', function() {
-            expect(app.maxArray([])).toBeNull(true);
-        });
-        it('should get a false', function(){
-            expect(app.maxArray(['1', '5'])).toEqual(false); //a real problem in JavaSript vs other programming languages - 'a', 'b' ASCII var or Error X
-        });
-    });
+    })
 });
